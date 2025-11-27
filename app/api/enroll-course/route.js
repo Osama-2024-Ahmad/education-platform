@@ -45,19 +45,9 @@ export async function GET(req) {
         }
 
         if (courseId) {
-            let result = await db.select().from(coursesTable).innerJoin(enrollToCourseTable, eq(coursesTable.cid, enrollToCourseTable.cid)).where(and(eq(enrollToCourseTable.email, user?.primaryEmailAddress?.emailAddress), eq(enrollToCourseTable.cid, courseId)))
-
-            // If user is not enrolled, auto-enroll them
-            if (!result || result.length === 0) {
-                console.log("User not enrolled, auto-enrolling...");
-                await db.insert(enrollToCourseTable).values({
-                    cid: courseId,
-                    email: user?.primaryEmailAddress?.emailAddress
-                })
-
-                // Fetch again after enrollment
-                result = await db.select().from(coursesTable).innerJoin(enrollToCourseTable, eq(coursesTable.cid, enrollToCourseTable.cid)).where(and(eq(enrollToCourseTable.email, user?.primaryEmailAddress?.emailAddress), eq(enrollToCourseTable.cid, courseId)))
-            }
+            let result = await db.select().from(coursesTable)
+                .leftJoin(enrollToCourseTable, and(eq(coursesTable.cid, enrollToCourseTable.cid), eq(enrollToCourseTable.email, user?.primaryEmailAddress?.emailAddress)))
+                .where(eq(coursesTable.cid, courseId))
 
             console.log("Enroll Course Result:", result[0]);
 

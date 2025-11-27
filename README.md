@@ -198,8 +198,22 @@ For support, email your-email@example.com or join our community Discord server.
 
 ## 🔗 Links
 
-- [Live Demo](https://your-demo-url.vercel.app)
+- [Live Demo](https://education-platform-nu-amber.vercel.app)
 - [Documentation](https://your-docs-url.com)
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](/screenshots/dashboard.png)
+
+### Course List
+![Course List](/screenshots/course-list.png)
+
+### Course Detail
+![Course Detail](/screenshots/course-detail.png)
+
+### Video Content
+![Video Content](/screenshots/video-content.png)
 - [Report Bug](https://github.com/Osama-2024-Ahmad/education-platform/issues)
 - [Request Feature](https://github.com/Osama-2024-Ahmad/education-platform/issues)
 

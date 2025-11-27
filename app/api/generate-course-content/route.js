@@ -6,9 +6,10 @@ import { db } from "@/config/db";
 import { coursesTable } from "@/config/schema";
 import { eq } from "drizzle-orm";
 
+const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3/search'
+
 export async function POST(req) {
   const { courseJson, name, courseId } = await req.json()
-  const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3/search'
 
   //     const PROMPT = `You are an expert course content generator.
 
@@ -35,7 +36,8 @@ export async function POST(req) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-  const promises = courseJson?.allchapters?.map(async (chapter) => {
+  const courseContent = [];
+  for (const chapter of courseJson?.allchapters) {
     const PROMPT = `You are an expert course content generator.
 
 Based on the given chapter information, generate high-quality, educational HTML content for EACH topic in the topics array.
@@ -112,13 +114,12 @@ Generate content for these topics: ${JSON.stringify(chapter.topics)}
       youtubeVideo: youtubeData,
       // courseData: ResJson // Suppress huge log
     })
-    return {
+
+    courseContent.push({
       youtubeVideo: youtubeData,
       courseData: ResJson
-    }
-  })
-
-  const courseContent = await Promise.all(promises)
+    });
+  }
 
   //save to databse
   const saveData = await db.update(coursesTable).set({
