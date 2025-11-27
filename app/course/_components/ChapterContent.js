@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { Menu } from 'lucide-react';
 
-function ChapterContent({ courseInfo }) {
+function ChapterContent({ courseInfo, setSidebarOpen }) {
   const { selectedChapters, setSelectedChapters } = useContext(SelectedChaptersConext)
   const courses = courseInfo?.courses;
   const enrolToCourse = courseInfo?.enrolToCourse;
@@ -35,16 +36,25 @@ function ChapterContent({ courseInfo }) {
   }
 
   return (
-    <div className='p-8 bg-background'>
-      <h2 className='font-bold text-[20px] text-blue-500 dark:text-blue-400 mb-4'>
+    <div className='flex-1 p-4 md:p-6 lg:p-8 bg-background overflow-y-auto'>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setSidebarOpen(true)}
+        className="md:hidden mb-4 p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"
+      >
+        <Menu className="w-5 h-5" />
+        <span>Chapters</span>
+      </button>
+
+      <h2 className='font-bold text-lg md:text-xl lg:text-[20px] text-blue-500 dark:text-blue-400 mb-4'>
         {selectedChapters + 1}. {courseContent?.[selectedChapters]?.courseData?.[0]?.chapterName}
       </h2>
 
       {/* Video Section */}
       {youTubeVideo && youTubeVideo.length > 0 && (
         <div className='mb-8'>
-          <h3 className='font-semibold text-lg mb-4 text-foreground'>📹 Video Tutorials</h3>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          <h3 className='font-semibold text-base md:text-lg mb-4 text-foreground'>📹 Video Tutorials</h3>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'>
             {youTubeVideo?.map((video, index) => index < 3 && (
               <div key={index} className='rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card border border-border'>
                 <YouTube
@@ -59,7 +69,7 @@ function ChapterContent({ courseInfo }) {
                   className='w-full'
                 />
                 <div className='p-3 bg-card'>
-                  <p className='text-sm font-medium text-foreground line-clamp-2'>{video?.title}</p>
+                  <p className='text-xs md:text-sm font-medium text-foreground line-clamp-2'>{video?.title}</p>
                 </div>
               </div>
             ))}
@@ -68,22 +78,22 @@ function ChapterContent({ courseInfo }) {
       )}
 
       {/* Content Section */}
-      <div className='mt-10'>
+      <div className='mt-6 md:mt-10'>
         {topic && (
           <div className='mb-6'>
-            <h3 className='font-bold text-blue-500 dark:text-blue-400 text-xl'>📚 {topic}</h3>
+            <h3 className='font-bold text-blue-500 dark:text-blue-400 text-lg md:text-xl'>📚 {topic}</h3>
           </div>
         )}
 
         {!enrolToCourse && <div className='my-5'>
-          <Button onClick={onEnrollHandler}>Enroll to Course</Button>
+          <Button onClick={onEnrollHandler} className="w-full sm:w-auto">Enroll to Course</Button>
         </div>}
 
-        <div className='p-6 bg-card border border-border rounded-xl shadow-sm'>
+        <div className='p-4 md:p-6 bg-card border border-border rounded-xl shadow-sm'>
           {content && (
             <div
-              className='prose prose-slate dark:prose-invert max-w-none'
-              style={{ lineHeight: "30px" }}
+              className='prose prose-sm md:prose-base prose-slate dark:prose-invert max-w-none'
+              style={{ lineHeight: "1.8" }}
               dangerouslySetInnerHTML={{ __html: content }}
             />
           )}
