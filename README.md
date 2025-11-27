@@ -151,7 +151,7 @@ The application uses PostgreSQL with Drizzle ORM. The schema includes:
 
 ## 🌐 Deployment
 
-[Live Demo](https://education-platform-nu-amber.vercel.app)
+**Live Demo:** https://education-platform-nu-amber.vercel.app
 
 ## 🤝 Contributing
 
@@ -180,7 +180,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🔗 Links
 
-- [Live Demo](https://education-platform-nu-amber.vercel.app)
+**Live Demo:** https://education-platform-nu-amber.vercel.app
 
 ## 📸 Screenshots
 
