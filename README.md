@@ -151,20 +151,7 @@ The application uses PostgreSQL with Drizzle ORM. The schema includes:
 
 ## 🌐 Deployment
 
-### Deploy on Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Add environment variables in Vercel dashboard
-4. Deploy!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Osama-2024-Ahmad/education-platform)
-
-### Other Deployment Options
-- Railway
-- Render
-- DigitalOcean App Platform
-- AWS Amplify
+[Live Demo](https://education-platform-nu-amber.vercel.app)
 
 ## 🤝 Contributing
 
@@ -190,11 +177,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Clerk for authentication services
 - Google for Gemini AI API
 - Shadcn for beautiful UI components
-- Vercel for hosting platform
-
-## 📞 Support
-
-For support, email your-email@example.com or join our community Discord server.
 
 ## 🔗 Links
 
@@ -204,16 +186,16 @@ For support, email your-email@example.com or join our community Discord server.
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](/screenshots/dashboard.png)
+![Dashboard](public/screenshots/dashboard.png)
 
 ### Course List
-![Course List](/screenshots/course-list.png)
+![Course List](public/screenshots/course-list.png)
 
 ### Course Detail
-![Course Detail](/screenshots/course-detail.png)
+![Course Detail](public/screenshots/course-detail.png)
 
 ### Video Content
-![Video Content](/screenshots/video-content.png)
+![Video Content](public/screenshots/video-content.png)
 - [Report Bug](https://github.com/Osama-2024-Ahmad/education-platform/issues)
 - [Request Feature](https://github.com/Osama-2024-Ahmad/education-platform/issues)
 
