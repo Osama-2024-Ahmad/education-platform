@@ -181,7 +181,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🔗 Links
 
 - [Live Demo](https://education-platform-nu-amber.vercel.app)
-- [Documentation](https://your-docs-url.com)
 
 ## 📸 Screenshots
 
@@ -196,9 +195,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ### Video Content
 ![Video Content](public/screenshots/video-content.png)
-- [Report Bug](https://github.com/Osama-2024-Ahmad/education-platform/issues)
-- [Request Feature](https://github.com/Osama-2024-Ahmad/education-platform/issues)
-
----
-
-**Made with ❤️ using Next.js and AI**
